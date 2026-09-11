@@ -21,7 +21,6 @@ Build a professional AI agency / consulting firm website that can sell services,
   - `admin.html`
 - A Flask backend exists for serving the website.
 - A MySQL-based contact form flow has been started.
-- A `requirements.txt` file exists for creating a local Python virtual environment for the current prototype.
 - A basic admin page exists for viewing submitted contact messages.
 - A simple demo chat assistant exists on the frontend and backend.
 - Project objective has been documented in `PROJECT_OBJECTIVE.md`.
@@ -65,9 +64,11 @@ Final target architecture:
 - AI Layer: Backend service modules exposed through FastAPI routes.
 - Deployment: Frontend and backend deployed independently.
 
-Current prototype dependency file:
+Current prototype dependency gap:
 
-- `requirements.txt` supports the existing Flask/MySQL prototype only.
+- A `requirements.txt` file is currently missing for the existing Flask/MySQL prototype.
+- This makes virtual environment setup unclear for a developer joining the repo.
+- If the prototype must be run before migration, add a temporary `requirements.txt` for Flask and MySQL dependencies.
 - When the backend is migrated to FastAPI, replace or split this dependency file for the new API app.
 
 Important implementation rule:
