@@ -52,7 +52,7 @@ Required principles:
 
 ## Target Repository Structure
 
-Future implementation should move toward this structure:
+The current root-level structure is prototype-only and should not be scaled directly. Future implementation should move toward this structure:
 
 ```text
 AI-Agency/
@@ -262,15 +262,28 @@ Replace the prototype foundation with a professional frontend/backend structure 
 
 Deliverables:
 
+- Repo restructuring into separate frontend, backend, docs, and infrastructure areas.
 - Next.js frontend scaffold.
 - FastAPI backend scaffold.
 - PostgreSQL database setup.
 - Environment-based backend configuration.
 - Shared naming conventions for products, services, industries, and leads.
 - Organized frontend components and backend routes.
+- Reusable product, service, industry, lead, and AI feature modules.
+- Linting, formatting, type checking, and basic test setup.
 - Basic accessibility improvements.
 - Clear local setup instructions.
 - Migration path from current prototype content into the new structure.
+
+Code quality rules:
+
+- Do not continue adding major features to the current single-page HTML/CSS/JavaScript prototype.
+- Avoid large files that mix many unrelated responsibilities.
+- Avoid repeated content, repeated styles, and repeated business logic.
+- Keep frontend UI components small and reusable.
+- Keep backend routes thin and move business logic into service modules.
+- Keep AI provider logic isolated so models, prompts, and providers can change later.
+- Prefer simple readable modules over premature complex architecture.
 
 ## Phase 6: Lead Capture And Admin Spec
 

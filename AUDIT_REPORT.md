@@ -81,7 +81,58 @@ Important implementation rule:
 
 ## Key Gaps And Feedback
 
-### 1. Positioning Is Still Too Generic
+### 1. Project Structure Is Not Professional Yet
+
+The current repo keeps public frontend files, backend code, admin template, PDFs, and planning docs together at the project root.
+
+Gap:
+
+- Frontend and backend are not separated.
+- There is no `apps/web` and `apps/api` structure.
+- There is no dedicated `docs` folder for planning/spec files.
+- There is no clear place for reusable components, routes, schemas, services, database models, or infrastructure files.
+- Static files, templates, backend code, and documentation are mixed together.
+- This structure will become difficult to maintain when multiple products, services, AI features, and admin workflows are added.
+
+Recommendation:
+
+- Treat the current root-level structure as prototype-only.
+- Move toward the planned professional structure:
+  - `apps/web` for the Next.js frontend.
+  - `apps/api` for the FastAPI backend.
+  - `docs` for objective, plan, audit, and future specs.
+  - `packages/shared` only if shared types/constants become useful.
+  - `infra` for Docker, deployment, and environment notes.
+- Keep product, service, industry, lead, and AI feature work in their own modules.
+- Make every future feature independently editable without touching unrelated sections.
+
+### 2. Code Is Not Optimized Or Maintainable Yet
+
+The current code works as an early prototype, but it is not optimized for production development or future scaling.
+
+Gap:
+
+- HTML is large and manually repeated.
+- CSS has duplicate blocks, unfinished declarations, repeated responsive rules, and many `!important` overrides.
+- JavaScript stores product/service/project data in separate hardcoded objects.
+- Button handlers are inconsistent between products and services.
+- Backend code is contained mostly in one file.
+- Database connection, routes, chat logic, admin logic, and contact logic are not modular.
+- There is no linting, formatting, type checking, test setup, or documented local setup.
+
+Recommendation:
+
+- Rebuild frontend as reusable Next.js components instead of continuing with one large HTML file.
+- Use TypeScript interfaces for products, services, industries, use cases, and leads.
+- Use shared data files or backend APIs rather than repeated hardcoded content.
+- Use Tailwind CSS and a small design system to reduce CSS duplication.
+- Rebuild backend with FastAPI route modules, schemas, service modules, and database models.
+- Add formatting and quality tools during the new scaffold:
+  - Frontend: ESLint, Prettier, TypeScript checks.
+  - Backend: Ruff or Black, basic pytest setup.
+- Keep optimization practical: prioritize clean structure, low duplication, clear naming, and independent modules before advanced performance work.
+
+### 3. Positioning Is Still Too Generic
 
 The current copy says the agency builds AI solutions, automates tasks, and helps businesses grow. This is directionally correct, but it is still broad.
 
@@ -97,7 +148,7 @@ Recommendation:
 - Choose an initial target market or buyer type.
 - Define the first 3-5 offers the agency wants to sell.
 
-### 2. Products, Services, Solutions, And Portfolio Overlap
+### 4. Products, Services, Solutions, And Portfolio Overlap
 
 The same concepts appear in multiple sections. For example, chatbots appear as a product, service, solution, and portfolio project.
 
@@ -114,7 +165,7 @@ Recommendation:
   - Solutions: business problems solved by AI.
   - Portfolio: proof, demos, or case studies.
 
-### 3. Content Needs To Become More Sales-Focused
+### 5. Content Needs To Become More Sales-Focused
 
 The current content mostly describes features at a high level.
 
@@ -131,7 +182,7 @@ Recommendation:
 - Add use cases by industry.
 - Add consultation/demo CTAs.
 
-### 4. Homepage Flow Needs Stronger Conversion Strategy
+### 6. Homepage Flow Needs Stronger Conversion Strategy
 
 The homepage has many useful sections, but the journey needs tightening.
 
@@ -151,7 +202,7 @@ Recommendation:
   - Proof or example results.
   - Contact / book a call.
 
-### 5. Frontend Structure Needs Cleanup
+### 7. Frontend Structure Needs Cleanup
 
 The current HTML and CSS show signs of rapid prototyping.
 
@@ -174,7 +225,7 @@ Recommendation:
 - Remove duplicate footer markup and encoding issues during migration.
 - Standardize naming for products, services, solutions, industries, and leads.
 
-### 6. JavaScript Behavior Has Some Mismatches
+### 8. JavaScript Behavior Has Some Mismatches
 
 Some buttons call functions with the wrong data category.
 
@@ -190,7 +241,7 @@ Recommendation:
 - Align service buttons with service data.
 - Consider using a single modal data structure for products, services, and projects.
 
-### 7. Backend Is Prototype-Level
+### 9. Backend Is Prototype-Level
 
 The Flask app is useful for local development, but not production-ready.
 
@@ -215,7 +266,7 @@ Recommendation:
 - Add better contact confirmation UX through frontend/backend API flow.
 - Disable debug mode for production.
 
-### 8. Lead Capture Is Too Basic For Consulting Sales
+### 10. Lead Capture Is Too Basic For Consulting Sales
 
 The current contact form collects name, email, and message.
 
@@ -234,7 +285,7 @@ Recommendation:
   - Timeline.
   - Preferred contact method.
 
-### 9. Product Launch System Does Not Exist Yet
+### 11. Product Launch System Does Not Exist Yet
 
 The products section is static.
 
@@ -254,7 +305,7 @@ Recommendation:
 - Use status values such as Concept, Prototype, Beta, Live, and Custom Build.
 - Build product pages so new products can be launched without changing unrelated website sections.
 
-### 10. AI Integration Architecture Is Not Defined Yet
+### 12. AI Integration Architecture Is Not Defined Yet
 
 The current chat assistant is a simple rule-based demo.
 
@@ -274,7 +325,7 @@ Recommendation:
 - Plan for RAG, tool/function calling, and MCP-compatible integrations when they become useful.
 - Add background jobs later for long-running AI tasks such as document processing.
 
-### 11. Launch Readiness Is Not Started Yet
+### 13. Launch Readiness Is Not Started Yet
 
 This is expected at the current stage.
 
@@ -295,15 +346,17 @@ Recommendation:
 
 1. Finalize business positioning and initial offers.
 2. Define sitemap and section architecture.
-3. Scaffold the professional Next.js frontend and FastAPI backend structure.
-4. Define structured data models for services, products, solutions, industries, leads, and case studies.
-5. Rewrite homepage content around real sales outcomes.
-6. Migrate useful prototype content into reusable frontend components.
-7. Improve contact form and lead capture.
-8. Secure and improve backend/admin.
-9. Build scalable product catalog and product detail structure.
-10. Add AI service layer for real AI features.
-11. Prepare for launch with SEO, analytics, legal pages, and deployment.
+3. Restructure the repo into professional frontend, backend, docs, and infra areas.
+4. Scaffold the professional Next.js frontend and FastAPI backend structure.
+5. Define structured data models for services, products, solutions, industries, leads, and case studies.
+6. Rewrite homepage content around real sales outcomes.
+7. Migrate useful prototype content into reusable frontend components.
+8. Improve contact form and lead capture.
+9. Secure and improve backend/admin.
+10. Build scalable product catalog and product detail structure.
+11. Add AI service layer for real AI features.
+12. Add linting, formatting, type checking, and basic tests.
+13. Prepare for launch with SEO, analytics, legal pages, and deployment.
 
 ## Overall Assessment
 
