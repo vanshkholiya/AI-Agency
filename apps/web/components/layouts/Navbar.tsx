@@ -4,10 +4,12 @@ export default function Navbar() {
       <h1 className="text-2xl font-bold">AI Agency</h1>
 
       <div className="hidden gap-6 md:flex">
+        <a href="#">Home</a>
         <a href="#services">Services</a>
         <a href="#products">Products</a>
         <a href="#solutions">Solutions</a>
         <a href="#industries">Industries</a>
+        <a href="#case-studies">Case Studies</a>
         <a href="#about">About</a>
       </div>
 
