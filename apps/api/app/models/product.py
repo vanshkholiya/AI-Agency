@@ -8,3 +8,5 @@ class Product(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String(150), nullable=False)
     description = Column(Text, nullable=False)
+    status = Column(String(50), nullable=False, default="Prototype")
+    cta = Column(String(50), nullable=False, default="Request Demo")

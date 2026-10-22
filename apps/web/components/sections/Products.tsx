@@ -8,6 +8,8 @@ type Product = {
   id: number;
   name: string;
   description: string;
+  status: string;
+  cta: string;
 };
 
 export default function Products() {
@@ -48,10 +50,12 @@ export default function Products() {
         <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {products.map((product) => (
             <ProductCard
-              key={product.id}
-              title={product.name}
-              description={product.description}
-            />
+          key={product.id}
+          title={product.name}
+          description={product.description}
+          status={product.status}
+          cta={product.cta}
+/>
           ))}
         </div>
       )}
